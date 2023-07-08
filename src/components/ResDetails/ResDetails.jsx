@@ -11,11 +11,12 @@ const ResDetails = () => {
   const [resDetails, setResDetails] = useState({});
   const [addReviewModal, setAddReviewModal] = useState(false);
   const navigate = useNavigate();
+
   useEffect(() => {
     const data = restaurants.find(({ id }) => id === Number(resId));
     setResDetails(data);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [resId]);
+  }, [resId, restaurants]);
   const addReviewHandler = () => {
     setAddReviewModal(true);
   };
