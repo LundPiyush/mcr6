@@ -15,6 +15,13 @@ const ReviewModal = ({ setAddReviewModal, resId }) => {
       type: "ADD_REVIEW",
       payload: { resId, reviewInput },
     });
+    setAddReviewModal({
+      comment: "",
+      rating: "",
+      pp: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3uO7UUBnkvtntc2R8Y9krkgWvbl-BTKMazZjg8Ul-gmDgzQeb8I6DIQ&s=0",
+      revName: "Piyush",
+    });
+    setAddReviewModal(false);
   };
   const ratingHandler = (event) => {
     setReviewInput({ ...reviewInput, rating: Number(event.target.value) });
