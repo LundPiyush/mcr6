@@ -11,7 +11,13 @@ const ReviewModal = ({ setAddReviewModal, resId }) => {
   });
 
   const submitHandler = () => {
-    dispatchRestaurant({ type: "ADD_REVIEW", payload: { resId, reviewInput } });
+    dispatchRestaurant({
+      type: "ADD_REVIEW",
+      payload: { resId, reviewInput },
+    });
+  };
+  const ratingHandler = (event) => {
+    setReviewInput({ ...reviewInput, rating: Number(event.target.value) });
   };
   return (
     <div className="flex justify-center items-center bg-[#00000080] fixed inset-0 z-10">
@@ -24,17 +30,15 @@ const ReviewModal = ({ setAddReviewModal, resId }) => {
         <div className="flex flex-col gap-4 my-6">
           <div className="flex justify-evenly">
             <label>Rating</label>
-            <input
-              className="border-gray-300 border-2"
-              value={reviewInput.rating}
-              onChange={(e) =>
-                setReviewInput({
-                  ...reviewInput,
-                  rating: Number(e.target.value),
-                })
-              }
-              placeholder="Enter rating 1 to 5"
-            />
+
+            <select onChange={ratingHandler}>
+              <option value="">Select Rating</option>
+              <option value={1}>1</option>
+              <option value={2}>2</option>
+              <option value={3}>3</option>
+              <option value={4}>4</option>
+              <option value={5}>5</option>
+            </select>
           </div>
           <div className="flex justify-evenly">
             <label>Comment</label>

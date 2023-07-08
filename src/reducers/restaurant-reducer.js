@@ -11,6 +11,18 @@ export const restaurantsReducer = (state, { type, payload }) => {
           ({ cuisine_id }) => cuisine_id === payload
         ),
       };
+    case "ADD_REVIEW":
+      const updatedRes = state?.restaurants?.map((item) =>
+        Number(item.id) === Number(payload.resId)
+          ? { ...item, ratings: [...item.ratings, payload.reviewInput] }
+          : item
+      );
+      console.log(updatedRes);
+      return {
+        ...state,
+        restaurants: updatedRes,
+      };
+
     default:
       return state;
   }
